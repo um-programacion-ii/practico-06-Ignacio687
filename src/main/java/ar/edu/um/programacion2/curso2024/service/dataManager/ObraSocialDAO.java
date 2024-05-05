@@ -1,6 +1,6 @@
 package ar.edu.um.programacion2.curso2024.service.dataManager;
 
-import ar.edu.um.programacion2.curso2024.entity.ObraSocial;
+import ar.edu.um.programacion2.curso2024.entity.atencion.ObraSocial;
 
 import java.util.Map;
 

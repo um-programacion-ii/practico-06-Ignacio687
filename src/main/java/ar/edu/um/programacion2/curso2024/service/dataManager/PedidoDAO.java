@@ -1,6 +1,6 @@
 package ar.edu.um.programacion2.curso2024.service.dataManager;
 
-import ar.edu.um.programacion2.curso2024.entity.Pedido;
+import ar.edu.um.programacion2.curso2024.entity.transaccion.Pedido;
 
 import java.util.Map;
 
