@@ -8,11 +8,16 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Turno extends ORMObject {
     private Medico medico;
     private Paciente paciente;
     private Atencion tipoDeAtencion;
 
+    public Turno(Medico medico, Paciente paciente, Atencion tipoDeAtencion) {
+        super();
+        this.medico = medico;
+        this.paciente = paciente;
+        this.tipoDeAtencion = tipoDeAtencion;
+    }
 }

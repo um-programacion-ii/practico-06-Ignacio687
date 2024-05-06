@@ -8,15 +8,23 @@ import ar.edu.um.programacion2.curso2024.entity.transaccion.Receta;
 import lombok.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Medico extends Persona {
     private List<ObraSocial> obraSocialList;
     private Especialidad especialidad;
     private AtencionParticular atencionParticular;
+
+    public Medico(String nombre, Integer edad, List<Receta> recetas, Map<Integer, Turno> turnos,
+                  List<ObraSocial> obraSocialList, Especialidad especialidad, AtencionParticular atencionParticular) {
+        super(nombre, edad, recetas, turnos);
+        this.obraSocialList = obraSocialList;
+        this.especialidad = especialidad;
+        this.atencionParticular = atencionParticular;
+    }
 
     public Receta atender(Turno turno) {
         return null;

@@ -14,6 +14,6 @@ public class AtencionParticular implements Atencion {
 
     @Override
     public void registrarAtencion() {
-
+        // Posible implementación de atención particular, podría generar una factura o algo por el estilo.
     }
 }
