@@ -1,4 +1,4 @@
 package service.dataManager;
 
-public class testCompraDAO {
+public class TestTurnoDAO {
 }

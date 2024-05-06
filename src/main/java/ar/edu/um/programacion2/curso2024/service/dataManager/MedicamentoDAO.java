@@ -2,17 +2,22 @@ package ar.edu.um.programacion2.curso2024.service.dataManager;
 
 import ar.edu.um.programacion2.curso2024.entity.Medicamento;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class MedicamentoDAO implements DAO<Medicamento> {
-    @Override
-    public Medicamento findById(int id) {
-        return null;
+public class MedicamentoDAO extends AbstractDAO<Medicamento> {
+    private static MedicamentoDAO instanciaDeClase;
+    private Map<Integer, Medicamento> medicamentoMap;
+
+    private MedicamentoDAO() {
+        this.medicamentoMap = new LinkedHashMap<>();
     }
 
-    @Override
-    public Map<Integer, Medicamento> findAll() {
-        return null;
+    public static MedicamentoDAO obtenerInstancia() {
+        if (instanciaDeClase == null) {
+            instanciaDeClase = new MedicamentoDAO();
+        }
+        return instanciaDeClase;
     }
 
     @Override
@@ -22,11 +27,6 @@ public class MedicamentoDAO implements DAO<Medicamento> {
 
     @Override
     public void update(Medicamento medicamento) {
-
-    }
-
-    @Override
-    public void delete(Medicamento medicamento) {
 
     }
 }

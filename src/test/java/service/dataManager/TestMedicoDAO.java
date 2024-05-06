@@ -1,4 +1,4 @@
 package service.dataManager;
 
-public class testPacienteDAO {
+public class TestMedicoDAO {
 }
