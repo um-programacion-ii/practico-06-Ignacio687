@@ -4,6 +4,7 @@ import ar.edu.um.programacion2.curso2024.entity.Medicamento;
 import ar.edu.um.programacion2.curso2024.entity.ORMObject;
 import ar.edu.um.programacion2.curso2024.entity.customExceptions.ObjectNotFoundException;
 import ar.edu.um.programacion2.curso2024.entity.estado.EstadoTransaccion;
+import ar.edu.um.programacion2.curso2024.service.dataManager.ORMMapManager;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,10 @@ public abstract class Transaccion extends ORMObject {
     }
 
     public void agregarMedicamento(Medicamento medicamento) {
-        // Recordatorio: Usar ORMMapManager
+        ORMMapManager.addObject(medicamento, this.medicamentos);
     }
 
     public void eliminarMedicamento(Medicamento medicamento) throws ObjectNotFoundException {
-        // Recordatorio: Usar ORMMapManager
+        ORMMapManager.delObject(medicamento, this.medicamentos);
     }
 }

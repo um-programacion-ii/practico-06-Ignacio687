@@ -1,18 +1,24 @@
 package ar.edu.um.programacion2.curso2024.service;
 
 import ar.edu.um.programacion2.curso2024.entity.atencion.AtencionParticular;
+import ar.edu.um.programacion2.curso2024.entity.estado.*;
 import ar.edu.um.programacion2.curso2024.service.dataManager.*;
 
 public class IoCConteinerService implements IoCService {
-    public static IoCConteinerService ioCConteiner;
+    private static IoCConteinerService ioCConteinerInstancia;
+    private static Cancelado canceladoInstancia;
+    private static Finalizado finalizadoInstancia;
+    private static Iniciado iniciadoInstancia;
+    private static Libre libreInstancia;
+    private static Ocupado ocupadoInstancia;
 
     private IoCConteinerService() { }
 
-    public static IoCConteinerService getInstance() {
-        if (ioCConteiner == null) {
-            ioCConteiner = new IoCConteinerService();
+    public static IoCConteinerService obtenerInstancia() {
+        if (ioCConteinerInstancia == null) {
+            ioCConteinerInstancia = new IoCConteinerService();
         }
-        return ioCConteiner;
+        return ioCConteinerInstancia;
     }
 
     @Override
@@ -82,6 +88,36 @@ public class IoCConteinerService implements IoCService {
 
     @Override
     public AtencionParticular getAtencionParticular() {
+        return null;
+    }
+
+    @Override
+    public ORMMapManager getORMMapManager() {
+        return null;
+    }
+
+    @Override
+    public Cancelado getEstadoCancelado() {
+        return null;
+    }
+
+    @Override
+    public Finalizado getEstadoFinalizado() {
+        return null;
+    }
+
+    @Override
+    public Iniciado getEstadoIniciado() {
+        return null;
+    }
+
+    @Override
+    public Libre getEstadoLibre() {
+        return null;
+    }
+
+    @Override
+    public Ocupado getEstadoOcupado() {
         return null;
     }
 }

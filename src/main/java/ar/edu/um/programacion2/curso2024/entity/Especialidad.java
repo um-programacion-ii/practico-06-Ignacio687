@@ -1,6 +1,5 @@
 package ar.edu.um.programacion2.curso2024.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,6 @@ public class Especialidad extends ORMObject {
     }
 
     public void tratar() {
-
+        // Posible implementación del tratamiento. Por ejemplo generar un estudio médico.
     }
 }

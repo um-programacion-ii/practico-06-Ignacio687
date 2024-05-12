@@ -1,6 +1,8 @@
 package ar.edu.um.programacion2.curso2024.entity;
 
 import ar.edu.um.programacion2.curso2024.entity.atencion.ObraSocial;
+import ar.edu.um.programacion2.curso2024.entity.customExceptions.NotEnoughStockException;
+import ar.edu.um.programacion2.curso2024.entity.customExceptions.ObjectNotFoundException;
 import ar.edu.um.programacion2.curso2024.entity.estado.EstadoPaciente;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Compra;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Receta;
@@ -8,6 +10,7 @@ import lombok.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Data
 @NoArgsConstructor
@@ -25,19 +28,18 @@ public class Paciente extends Persona {
         this.compras = compras;
     }
 
-    public Paciente(ObraSocial obraSocial, EstadoPaciente estado, List<Compra> compras) {
-        this.obraSocial = obraSocial;
-        this.estado = estado;
-        this.compras = compras;
-    }
-
     public void guardarCompra(Compra compra) {
-
+        this.compras.add(compra);
     }
 
     public Compra sacarCompra() {
-        //Recordatorio: Tiene que funcionar como una FIFO
-        return null;
+        try {
+            Compra compra = this.compras.getFirst();
+            this.compras.removeFirst();
+            return compra;
+        } catch (NoSuchElementException e) {
+            return null;
+        }
     }
 
     /**

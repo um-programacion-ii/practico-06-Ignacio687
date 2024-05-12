@@ -1,6 +1,6 @@
 package ar.edu.um.programacion2.curso2024.entity;
 
-import lombok.AllArgsConstructor;
+import ar.edu.um.programacion2.curso2024.entity.customExceptions.NotEnoughStockException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,11 +21,14 @@ public class Medicamento extends ORMObject {
     }
 
     public void agregar(int cantidad) {
-
+        this.cantidad += cantidad;
     }
 
-    public void sacar(int cantidad) {
-
+    public void sacar(int cantidad) throws NotEnoughStockException {
+        if (this.cantidad >= cantidad) {
+            this.cantidad -= cantidad;
+        } else {
+            throw new NotEnoughStockException("No hay "+cantidad+" unidades de "+this.nombre);
+        }
     }
-    
 }

@@ -1,6 +1,7 @@
 package ar.edu.um.programacion2.curso2024.service;
 
 import ar.edu.um.programacion2.curso2024.entity.atencion.AtencionParticular;
+import ar.edu.um.programacion2.curso2024.entity.estado.*;
 import ar.edu.um.programacion2.curso2024.service.dataManager.*;
 
 public interface IoCService {
@@ -18,4 +19,10 @@ public interface IoCService {
     GestionFarmaciaService getGestionFarmaciaService();
     GestionTurnoService getGestionTurnoService();
     AtencionParticular getAtencionParticular();
+    ORMMapManager getORMMapManager();
+    Cancelado getEstadoCancelado();
+    Finalizado getEstadoFinalizado();
+    Iniciado getEstadoIniciado();
+    Libre getEstadoLibre();
+    Ocupado getEstadoOcupado();
 }

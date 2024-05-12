@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 public class Main {
 
     public void start() {
-        IoCConteinerService.getInstance();
+        IoCConteinerService.obtenerInstancia();
         // Código de inicio del servicio.
     }
 

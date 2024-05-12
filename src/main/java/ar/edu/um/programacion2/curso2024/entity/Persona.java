@@ -2,13 +2,14 @@ package ar.edu.um.programacion2.curso2024.entity;
 
 import ar.edu.um.programacion2.curso2024.entity.customExceptions.ObjectNotFoundException;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Receta;
-import lombok.AllArgsConstructor;
+import ar.edu.um.programacion2.curso2024.service.dataManager.ORMMapManager;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Data
 @NoArgsConstructor
@@ -28,19 +29,24 @@ public abstract class Persona extends ORMObject {
     }
 
     public void guardarReceta(Receta receta) {
-
+        this.recetas.add(receta);
     }
 
     public Receta sacarReceta() {
-        //Recordatorio: Tiene que funcionar como una FIFO
-        return null;
+        try {
+            Receta receta = this.recetas.getFirst();
+            this.recetas.removeFirst();
+            return receta;
+        } catch (NoSuchElementException e) {
+            return null;
+        }
     }
 
     public void agendarTurno(Turno turno) {
-
+        ORMMapManager.addObject(turno, this.turnos);
     }
 
     public void eliminarTurno(Turno turno) throws ObjectNotFoundException {
-
+        ORMMapManager.delObject(turno, this.turnos);
     }
 }
