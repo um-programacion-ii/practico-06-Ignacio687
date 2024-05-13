@@ -17,8 +17,8 @@ import java.util.NoSuchElementException;
 public abstract class Persona extends ORMObject {
     protected String nombre;
     protected Integer edad;
-    private List<Receta> recetas;
-    private Map<Integer, Turno> turnos;
+    protected List<Receta> recetas;
+    protected Map<Integer, Turno> turnos;
 
     protected Persona(String nombre, Integer edad, List<Receta> recetas, Map<Integer, Turno> turnos) {
         super();

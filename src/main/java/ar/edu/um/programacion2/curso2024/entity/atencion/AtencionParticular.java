@@ -16,4 +16,9 @@ public class AtencionParticular implements Atencion {
     public void registrarAtencion() {
         // Posible implementación de atención particular, podría generar una factura o algo por el estilo.
     }
+
+    @Override
+    public int getObjectID() {
+        return 0;
+    }
 }

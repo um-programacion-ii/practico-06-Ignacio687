@@ -4,6 +4,7 @@ import ar.edu.um.programacion2.curso2024.entity.Paciente;
 import ar.edu.um.programacion2.curso2024.entity.Persona;
 import ar.edu.um.programacion2.curso2024.entity.atencion.ObraSocial;
 import ar.edu.um.programacion2.curso2024.entity.estado.IniciadoImp;
+import ar.edu.um.programacion2.curso2024.entity.estado.LibreImp;
 import ar.edu.um.programacion2.curso2024.entity.estado.OcupadoImp;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Compra;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,7 @@ public class TestPaciente extends TestPersona {
 
     @Override
     protected Persona crearInstancia() {
-        return new Paciente("Pepe", 20, this.recetasSpy, this.turnoMap, new ObraSocial(), new OcupadoImp(),
+        return new Paciente("Pepe", 20, this.recetasSpy, this.turnoMap, new ObraSocial(), new LibreImp(),
                 this.comprasSpy);
     }
 
@@ -63,4 +64,10 @@ public class TestPaciente extends TestPersona {
         assertNull(this.paciente.sacarCompra());
     }
 
+    @Test
+    public void testComprobarEstado() {
+        assertFalse(this.paciente.comprobarEstado());
+        this.paciente.setEstado(new OcupadoImp());
+        assertTrue(this.paciente.comprobarEstado());
+    }
 }

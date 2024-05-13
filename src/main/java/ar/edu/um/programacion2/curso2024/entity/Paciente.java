@@ -4,6 +4,7 @@ import ar.edu.um.programacion2.curso2024.entity.atencion.ObraSocial;
 import ar.edu.um.programacion2.curso2024.entity.customExceptions.NotEnoughStockException;
 import ar.edu.um.programacion2.curso2024.entity.customExceptions.ObjectNotFoundException;
 import ar.edu.um.programacion2.curso2024.entity.estado.EstadoPaciente;
+import ar.edu.um.programacion2.curso2024.entity.estado.Ocupado;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Compra;
 import ar.edu.um.programacion2.curso2024.entity.transaccion.Receta;
 import lombok.*;
@@ -47,6 +48,6 @@ public class Paciente extends Persona {
      * @return Devuelve 'true' si esta ocupado, 'false' si esta desocupado.
      */
     public boolean comprobarEstado() {
-        return false;
+        return this.estado instanceof Ocupado;
     }
 }

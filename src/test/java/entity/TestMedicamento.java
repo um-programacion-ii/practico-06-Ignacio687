@@ -49,4 +49,17 @@ public class TestMedicamento extends TestORMObject<Medicamento> {
         assertThrows(NotEnoughStockException.class, () -> this.medicamento1.sacar(6));
         assertThrows(NotEnoughStockException.class, () -> this.medicamento2.sacar(20));
     }
+
+    @Test
+    public void testVerificarStock() {
+        assertTrue(this.medicamento1.verificarStock(5));
+        assertEquals(5, this.medicamento1.getCantidad());
+        assertTrue(this.medicamento1.verificarStock(4));
+        assertEquals(5, this.medicamento1.getCantidad());
+        assertTrue(this.medicamento2.verificarStock(9));
+        assertFalse(this.medicamento1.verificarStock(6));
+        assertEquals(5, this.medicamento1.getCantidad());
+        assertFalse(this.medicamento2.verificarStock(20));
+        assertEquals(12, this.medicamento2.getCantidad());
+    }
 }

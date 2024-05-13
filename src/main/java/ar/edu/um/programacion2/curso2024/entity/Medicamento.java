@@ -31,4 +31,12 @@ public class Medicamento extends ORMObject {
             throw new NotEnoughStockException("No hay "+cantidad+" unidades de "+this.nombre);
         }
     }
+
+    /**
+     * Verifica si existe la cantidad de unidades solicitadas.
+     * @return Devuelve 'true' si existen, 'false' si no.
+     */
+    public boolean verificarStock(int cantidad) {
+        return this.cantidad >= cantidad;
+    }
 }
