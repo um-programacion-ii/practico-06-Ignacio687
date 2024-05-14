@@ -6,7 +6,6 @@ import ar.edu.um.programacion2.curso2024.service.dataManager.*;
 
 public class IoCConteinerService implements IoCService {
     private static IoCConteinerService ioCConteinerInstancia;
-    private static Cancelado canceladoInstancia;
     private static Finalizado finalizadoInstancia;
     private static Iniciado iniciadoInstancia;
     private static Libre libreInstancia;
@@ -93,11 +92,6 @@ public class IoCConteinerService implements IoCService {
 
     @Override
     public ORMMapManager getORMMapManager() {
-        return null;
-    }
-
-    @Override
-    public Cancelado getEstadoCancelado() {
         return null;
     }
 

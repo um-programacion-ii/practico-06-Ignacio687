@@ -15,8 +15,8 @@ import java.util.Map;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public abstract class Transaccion extends ORMObject {
-    private Map<Integer, Medicamento> medicamentos;
-    private EstadoTransaccion estado;
+    protected Map<Integer, Medicamento> medicamentos;
+    protected EstadoTransaccion estado;
 
     protected Transaccion(Map<Integer, Medicamento> medicamentos, EstadoTransaccion estado) {
         super();

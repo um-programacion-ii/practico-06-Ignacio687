@@ -20,7 +20,6 @@ public interface IoCService {
     GestionTurnoService getGestionTurnoService();
     AtencionParticular getAtencionParticular();
     ORMMapManager getORMMapManager();
-    Cancelado getEstadoCancelado();
     Finalizado getEstadoFinalizado();
     Iniciado getEstadoIniciado();
     Libre getEstadoLibre();

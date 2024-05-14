@@ -11,6 +11,7 @@ public class PedidoDAO extends AbstractDAO<Pedido> {
 
     private PedidoDAO() {
         this.pedidoMap = new LinkedHashMap<>();
+        this.objectMap = this.pedidoMap;
     }
 
     public static PedidoDAO obtenerInstancia() {
@@ -20,23 +21,24 @@ public class PedidoDAO extends AbstractDAO<Pedido> {
         return instanciaDeClase;
     }
 
-    @Override
-    public Pedido findById(int id) {
-        return null;
+    public void setPedidoMap(Map<Integer, Pedido> pedidoMap) {
+        this.pedidoMap = pedidoMap;
+        this.objectMap = pedidoMap;
     }
 
     @Override
-    public Map<Integer, Pedido> findAll() {
-        return null;
-    }
-
-    @Override
-    public void save(Pedido pedido) {
-
+    protected Pedido generarCopiaObjeto(Pedido objeto) {
+        return new Pedido(objeto.getMedicamentos(), objeto.getEstado());
     }
 
     @Override
     public void update(Pedido pedido) {
-
+        Pedido pedidoLocal = this.pedidoMap.get(pedido.getObjectID());
+        if (pedidoLocal != null) {
+            pedidoLocal.setMedicamentos(pedido.getMedicamentos());
+            pedidoLocal.setEstado(pedido.getEstado());
+        } else {
+            this.save(pedido);
+        }
     }
 }
