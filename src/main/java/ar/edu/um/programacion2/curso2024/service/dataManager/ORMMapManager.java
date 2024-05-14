@@ -17,11 +17,14 @@ public class ORMMapManager {
         return instanciaDeClase;
     }
 
-    public static void addObject(ORMObject ormObject, Map<Integer, ? extends ORMObject> ormObjectMap) {
-
+    public static <T extends ORMObject> void addObject(T ormObject, Map<Integer, T> ormObjectMap) {
+        ormObjectMap.put(ormObject.getObjectID(), ormObject);
     }
 
-    public static void delObject(ORMObject ormObject, Map<Integer, ? extends ORMObject> ormObjectMap) throws ObjectNotFoundException {
-
+    public static <T extends ORMObject> void delObject(T ormObject, Map<Integer, T> ormObjectMap)
+            throws ObjectNotFoundException {
+        if (ormObjectMap.remove(ormObject.getObjectID()) == null) {
+            throw new ObjectNotFoundException("El objeto "+ormObject.getObjectID()+" no se encuentra en el mapa");
+        }
     }
 }

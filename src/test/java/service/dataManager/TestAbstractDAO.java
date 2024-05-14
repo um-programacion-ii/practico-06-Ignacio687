@@ -71,7 +71,8 @@ public abstract class TestAbstractDAO<F extends AbstractDAO<T>, T extends ORMObj
             Mockito.doReturn(1).when(this.objectSpy).getObjectID();
             ArgumentCaptor<ORMObject> capturadorDeArgumento = ArgumentCaptor.forClass(ORMObject.class);
             this.objectDAOSpy.save(this.objectSpy);
-            mockedStaticORM.verify(() -> ORMMapManager.addObject(capturadorDeArgumento.capture(), eq(this.objectMapSpy)),
+            mockedStaticORM.verify(() -> ORMMapManager.<ORMObject>addObject(capturadorDeArgumento.capture(),
+                            (Map<Integer, ORMObject>) eq(this.objectMapSpy)),
                     times(1));
             ORMObject captura = capturadorDeArgumento.getValue();
             assertNotSame(captura, this.objectSpy);
