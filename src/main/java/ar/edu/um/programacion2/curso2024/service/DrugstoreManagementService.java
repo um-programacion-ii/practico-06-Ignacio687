@@ -8,6 +8,5 @@ import java.util.List;
 public interface DrugstoreManagementService {
     Pedido iniciarPedido(List<Medicamento> medicamentos);
     void finalizarPedido(Pedido pedido);
-    void cancelarPedido(Pedido pedido);
     List<Pedido> verPedidos();
 }

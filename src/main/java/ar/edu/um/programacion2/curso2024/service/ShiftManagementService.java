@@ -11,7 +11,6 @@ public interface ShiftManagementService {
     Turno solicitarTurno(Paciente paciente, Especialidad especialidad, Atencion tipoDeAtencion);
     Turno solicitarTurno(Paciente paciente, Medico medico, Atencion tipoDeAtencion);
     Receta iniciarTurno(Turno turno) throws NotEnabledToRunException;
-    void cancelarTurno(Turno turno);
     List<Turno> verTurnos();
     List<Turno> verTurnos(Persona persona);
     List<Turno> verTurnos(Atencion atencion);

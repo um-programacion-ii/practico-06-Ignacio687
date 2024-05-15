@@ -106,28 +106,20 @@ public class TestMedico extends TestPersona {
         Turno turno = new Turno(this.medicoSpy, pacienteMock, null);
         Receta receta;
         boolean NullAssertionFlag = false;
-        for (int counter=0; counter<20; counter++) {
+        boolean NotNullAssertionFlag = false;
+        for (int counter=0; counter<21; counter++) {
             receta = this.medicoSpy.generarReceta(turno);
             if (receta == null) {
                 NullAssertionFlag = true;
             } else {
+                NotNullAssertionFlag = true;
                 assertSame(this.medicoSpy, receta.getMedico());
                 assertSame(pacienteMock, receta.getPaciente());
                 assertInstanceOf(Iniciado.class, receta.getEstado());
             }
         }
         assertTrue(NullAssertionFlag);
-        NullAssertionFlag = false;
-        for (int counter=0; counter<20; counter++) {
-            receta = this.medicoSpy.generarReceta(turno);
-            if (receta != null) {
-                NullAssertionFlag = true;
-                assertSame(this.medicoSpy, receta.getMedico());
-                assertSame(pacienteMock, receta.getPaciente());
-                assertInstanceOf(Iniciado.class, receta.getEstado());
-            }
-        }
-        assertTrue(NullAssertionFlag);
+        assertTrue(NotNullAssertionFlag);
     }
 
     @Test

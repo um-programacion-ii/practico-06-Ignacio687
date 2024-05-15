@@ -10,7 +10,6 @@ import java.util.List;
 public interface PharmacyManagementService {
     Compra iniciarCompra(Receta receta) throws NotEnabledToRunException;
     void finalizarCompra(Compra compra) throws NotEnabledToRunException;
-    void cancelarCompra(Compra compra);
     List<Compra> verCompras();
     List<Compra> verCompras(Paciente paciente);
 }

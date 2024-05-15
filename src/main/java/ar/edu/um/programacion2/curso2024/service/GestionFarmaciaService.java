@@ -30,11 +30,6 @@ public class GestionFarmaciaService implements PharmacyManagementService{
     }
 
     @Override
-    public void cancelarCompra(Compra compra) {
-
-    }
-
-    @Override
     public List<Compra> verCompras() {
         return null;
     }

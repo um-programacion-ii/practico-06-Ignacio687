@@ -28,11 +28,6 @@ public class GestionDrogueriaService implements DrugstoreManagementService {
     }
 
     @Override
-    public void cancelarPedido(Pedido pedido) {
-
-    }
-
-    @Override
     public List<Pedido> verPedidos() {
         return null;
     }

@@ -36,11 +36,6 @@ public class GestionTurnoService implements ShiftManagementService {
     }
 
     @Override
-    public void cancelarTurno(Turno turno) {
-
-    }
-
-    @Override
     public List<Turno> verTurnos() {
         return null;
     }
