@@ -48,6 +48,10 @@ public class TestAtencionMedicoService {
         this.turnoSpy = spy(new Turno(this.medicoMock, mock(Paciente.class), mock(AtencionParticular.class)));
         this.atencionMedicoService = AtencionMedicoService.obtenerInstancia();
     }
+    @AfterEach
+    public void cierre() {
+        this.ioCConteinerServiceMockedStatic.close();
+    }
 
     private void preparacionAtenderTurno() {
         when(medicoMock.getObjectID()).thenReturn(1);
@@ -61,10 +65,6 @@ public class TestAtencionMedicoService {
         }
     }
 
-    @AfterEach
-    public void cierre() {
-        this.ioCConteinerServiceMockedStatic.close();
-    }
 
     @Test
     public void testAtenderTurno() {
