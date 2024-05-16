@@ -76,6 +76,39 @@ public class TestTurnoDAO extends TestAbstractDAO<TurnoDAO, Turno> {
         assertEquals(medicoMock2.getObjectID(), turnoMap.get(2).getMedico().getObjectID());
     }
 
+    private void preparacionFindBy() {
+        when(this.objectSpy.getObjectID()).thenReturn(1);
+        when(this.objectSpy2.getObjectID()).thenReturn(2);
+        Mockito.doReturn(this.objectSpy).when(this.objectDAOSpy).findById(1);
+        Mockito.doReturn(this.objectSpy2).when(this.objectDAOSpy).findById(2);
+        Collection<Turno> medicoMapSimulado = new ArrayList<>(List.of(this.objectSpy, this.objectSpy2));
+        when(this.objectMapSpy.values()).thenReturn(medicoMapSimulado);
+    }
+
+    @Test
+    public void testFindAllByAtencion_AtencionParticular() {
+        this.preparacionFindBy();
+        when(this.objectSpy.getTipoDeAtencion()).thenReturn(mock(ObraSocial.class));
+        when(this.objectSpy2.getTipoDeAtencion()).thenReturn(mock(AtencionParticular.class));
+        Map<Integer, Turno> turnoMap = this.objectDAOSpy.findAllByAtencion(mock(AtencionParticular.class));
+        assertEquals(1, turnoMap.size());
+        assertSame(this.objectSpy2.getObjectID(), turnoMap.get(2).getObjectID());
+    }
+
+
+    @Test
+    public void testFindAllByAtencion_ObraSocial() {
+        this.preparacionFindBy();
+        ObraSocial obraSocialMock1 = mock(ObraSocial.class);
+        ObraSocial obraSocialMock2 = mock(ObraSocial.class);
+        when(obraSocialMock1.getObjectID()).thenReturn(1);
+        when(obraSocialMock2.getObjectID()).thenReturn(2);
+        when(this.objectSpy.getTipoDeAtencion()).thenReturn(obraSocialMock1);
+        when(this.objectSpy2.getTipoDeAtencion()).thenReturn(obraSocialMock2);
+        Map<Integer, Turno> turnoMap = this.objectDAOSpy.findAllByAtencion(obraSocialMock1);
+        assertEquals(1, turnoMap.size());
+        assertSame(this.objectSpy.getObjectID(), turnoMap.get(1).getObjectID());
+    }
 
     @Test
     public void testUpdate() {

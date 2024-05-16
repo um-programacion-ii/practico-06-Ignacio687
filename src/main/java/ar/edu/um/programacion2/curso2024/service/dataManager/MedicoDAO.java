@@ -64,7 +64,7 @@ public class MedicoDAO extends AbstractDAO<Medico> {
 
     public Map<Integer, Medico> findAllByAtencion(Atencion tipoDeAtencion) {
         if (tipoDeAtencion instanceof ObraSocial) {
-            return this.findAllByAtencion(tipoDeAtencion);
+            return this.findAllByObraSocial((ObraSocial) tipoDeAtencion);
         } else {
             Map<Integer, Medico> medicoMapCopia = new HashMap<>();
             for (Medico medico: this.medicoMap.values()) {
@@ -77,7 +77,7 @@ public class MedicoDAO extends AbstractDAO<Medico> {
         }
     }
 
-    private Map<Integer, Medico> findAllByAtencion(ObraSocial obraSocial) {
+    private Map<Integer, Medico> findAllByObraSocial(ObraSocial obraSocial) {
         Map<Integer, Medico> medicoMapCopia = new HashMap<>();
         for (Medico medico: this.medicoMap.values()) {
             if (medico.getObraSocialMap().get(obraSocial.getObjectID()) != null) {

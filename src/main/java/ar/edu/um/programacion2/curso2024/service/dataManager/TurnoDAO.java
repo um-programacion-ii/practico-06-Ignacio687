@@ -84,7 +84,7 @@ public class TurnoDAO extends AbstractDAO<Turno> {
 
     public Map<Integer, Turno> findAllByAtencion(Atencion tipoDeAtencion) {
         if (tipoDeAtencion instanceof ObraSocial) {
-            return this.findAllByAtencion(tipoDeAtencion);
+            return this.findAllByAtencionObraSocial((ObraSocial) tipoDeAtencion);
         } else {
             Map<Integer, Turno> turnoMapCopia = new HashMap<>();
             for (Turno turno: this.turnoMap.values()) {
@@ -96,7 +96,7 @@ public class TurnoDAO extends AbstractDAO<Turno> {
             return turnoMapCopia;
         }
     }
-    private Map<Integer, Turno> findAllByAtencion(ObraSocial obraSocial) {
+    private Map<Integer, Turno> findAllByAtencionObraSocial(ObraSocial obraSocial) {
         Map<Integer, Turno> turnoMapCopia = new HashMap<>();
         for (Turno turno: this.turnoMap.values()) {
             if (turno.getTipoDeAtencion().getObjectID() == obraSocial.getObjectID()) {
