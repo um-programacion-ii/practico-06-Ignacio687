@@ -22,96 +22,108 @@ public class IoCConteinerService implements IoCService {
 
     @Override
     public CompraDAO getCompraDAO() {
-        return null;
+        return CompraDAO.obtenerInstancia();
     }
 
     @Override
     public EspecialidadDAO getEspecialidadDAO() {
-        return null;
+        return EspecialidadDAO.obtenerInstancia();
     }
 
     @Override
     public MedicamentoDAO getMedicamentoDAO() {
-        return null;
+        return MedicamentoDAO.obtenerInstancia();
     }
 
     @Override
     public MedicoDAO getMedicoDAO() {
-        return null;
+        return MedicoDAO.obtenerInstancia();
     }
 
     @Override
     public ObraSocialDAO getObraSocialDAO() {
-        return null;
+        return ObraSocialDAO.obtenerInstancia();
     }
 
     @Override
     public PacienteDAO getPacienteDAO() {
-        return null;
+        return PacienteDAO.obtenerInstancia();
     }
 
     @Override
     public PedidoDAO getPedidoDAO() {
-        return null;
+        return PedidoDAO.obtenerInstancia();
     }
 
     @Override
     public RecetaDAO getRecetaDAO() {
-        return null;
+        return RecetaDAO.obtenerInstancia();
     }
 
     @Override
     public TurnoDAO getTurnoDAO() {
-        return null;
+        return TurnoDAO.obtenerInstancia();
     }
 
     @Override
     public AtencionMedicoService getAtencionMedicoService() {
-        return null;
+        return AtencionMedicoService.obtenerInstancia();
     }
 
     @Override
     public GestionDrogueriaService getGestionDrogueriaService() {
-        return null;
+        return GestionDrogueriaService.obtenerInstancia();
     }
 
     @Override
     public GestionFarmaciaService getGestionFarmaciaService() {
-        return null;
+        return GestionFarmaciaService.obtenerInstancia();
     }
 
     @Override
     public GestionTurnoService getGestionTurnoService() {
-        return null;
+        return GestionTurnoService.obtenerInstancia();
     }
 
     @Override
     public AtencionParticular getAtencionParticular() {
-        return null;
+        return AtencionParticular.obtenerInstancia();
     }
 
     @Override
     public ORMMapManager getORMMapManager() {
-        return null;
+        return ORMMapManager.obtenerInstancia();
     }
 
     @Override
     public Finalizado getEstadoFinalizado() {
-        return null;
+        if (finalizadoInstancia == null) {
+            finalizadoInstancia = new FinalizadoImp();
+        }
+        return finalizadoInstancia;
     }
 
     @Override
     public Iniciado getEstadoIniciado() {
-        return null;
+        if (iniciadoInstancia == null) {
+            iniciadoInstancia = new IniciadoImp();
+        }
+        return iniciadoInstancia;
     }
 
     @Override
     public Libre getEstadoLibre() {
-        return null;
+        if (libreInstancia == null) {
+            libreInstancia = new LibreImp();
+        }
+        return libreInstancia;
     }
 
     @Override
     public Ocupado getEstadoOcupado() {
-        return null;
+        if (ocupadoInstancia == null) {
+            ocupadoInstancia = new OcupadoImp();
+        }
+        return ocupadoInstancia;
     }
 }
